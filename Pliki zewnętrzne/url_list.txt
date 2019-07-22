@@ -1,0 +1,4 @@
+https://www.stackoverflow.com/questions/1798796/python-list-index-out-of-range-error
+https://www.rk.edu.pl/pl/operowanie-na-plikach-w-pythonie
+https://www.sololearn.com/Play/Python
+https://www.kodolamacz.pl

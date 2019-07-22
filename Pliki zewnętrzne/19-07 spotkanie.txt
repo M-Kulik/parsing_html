@@ -1,0 +1,27 @@
+1. postawienie serwera
+2. prosta baza klucz. wartoœæ
+3. 
+
+
+>>>>rest server
+>>>> test driven developement  T.D.D.
+
+1. rozpisanie zestawu testów
+2. rozpisanie funkcji
+
+
+>>>> WWW.REALPYTHON.COM
+
+obs³uga b³êdów w pythonie (exception)
+
+
+>>> regular expresions
+
+>>>> JASON - JavaScript object notation
+
+
+1. trawersowanie od dzieci najnizszego rzedu
+2. wypisywanie w podanej kolejnosci
+3. stworzyæ plik logu
+
+>>> WHATS UP
