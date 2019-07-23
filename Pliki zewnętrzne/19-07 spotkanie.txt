@@ -25,3 +25,7 @@ obs³uga b³êdów w pythonie (exception)
 3. stworzyæ plik logu
 
 >>> WHATS UP
+
+____________________________________________________
+1. JavaScript zostaje w zupie
+2.
