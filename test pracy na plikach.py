@@ -1,38 +1,45 @@
 import os
-import urllib.request
+import urllib.request, urllib.parse, urllib.error
 import requests
 import bs4
-from urllib import parse
+from pathlib import Path, PureWindowsPath
 
 ######### ZNAKI ZAKAZANE \/:*?"<>| ########
 
-cwd = os.getcwd()
-print(cwd)
-list_dir = 'url_list.txt'
+file_dir = Path("C:/Users/Mateusz/Documents/Python programy/Upraszczanie stron/Pliki zewnętrzne/url_list.txt")
+# feeding url list file directory
 
-with open(list_dir) as fp:
+with open(file_dir) as fp:
     line = fp.readlines()
+    line_count = len(line)
     c = 0
-    line_count = 4
+# count lines for loop
 
     while c < line_count:
         url = line[c]
+        if not urllib.parse.urlparse(url).scheme:
+            print("error: invalid url (use http:// format)")
+            break
+# handle wrong url format exception
+
         try:
             r = urllib.request.urlopen(url)
+        except urllib.error.URLError as e:
+            print(e)
             break
-        except:
-            print(sys.exc_info()[0], 'error, wrong url')
-            # handle exception here
+# handle wrong url exception
 
         soup = bs4.BeautifulSoup(r, 'html.parser')
-
-        print(soup)
         nazwa_pliku = soup.title.text  #URL
+
         body = soup.body
-        for paragraph in body.find_all('p'):
-            print(paragraph.text)
-            p_zewn = open('blablabla' + '.txt', '+w')
-            p_zewn.write(paragraph.text)
+        print(body.text)
+        # for paragraph in body.find_all('p'):
+        #     print(paragraph.text)
+        #     p_zewn = open('blablabla' + '.txt', '+w')
+        #     p_zewn.write(paragraph.text)
+
+
 
         # print(znaczniki)
         # tekst = znaczniki.text
@@ -48,7 +55,7 @@ with open(list_dir) as fp:
 # i = 0
 # url = linie[i]
 #
-# r = requests.get(url)
+# r = requests.get(url)`
 # print(r.text)
 #
 
