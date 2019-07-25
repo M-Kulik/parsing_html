@@ -3,6 +3,7 @@ import urllib.request, urllib.parse, urllib.error
 import requests
 import bs4
 from pathlib import Path, PureWindowsPath
+import html2text
 
 ######### ZNAKI ZAKAZANE \/:*?"<>| ########
 
@@ -30,10 +31,18 @@ with open(file_dir) as fp:
 # handle wrong url exception
 
         soup = bs4.BeautifulSoup(r, 'html.parser')
-        nazwa_pliku = soup.title.text  #URL
+        clean = soup.prettify()
+        html = html2text.html2text(clean)
+        print(html)
+#### html2text wspomagany beautiful soup - ominąć ciastka, menu itp. ####
 
-        body = soup.body
-        print(body.text)
+
+        # clean_soup = soup.get_text()
+        # print(clean_soup)
+
+
+        # body = clean_soup.body
+        # print(body.text)
         # for paragraph in body.find_all('p'):
         #     print(paragraph.text)
         #     p_zewn = open('blablabla' + '.txt', '+w')
@@ -49,24 +58,4 @@ with open(file_dir) as fp:
 
 
         c += 1
-#
-# linie = f.readlines()
-# ilosc_stron = len(linie)
-# i = 0
-# url = linie[i]
-#
-# r = requests.get(url)`
-# print(r.text)
-#
-
-
-# while i < ilosc_stron:
-#     soup = BeautifulSoup(linie[i], 'html.parser')
-#     print(soup.prettify())
-#     i = i+1
-#
-
-# while i<ilosc_stron:
-#     print(linie[i])
-#     i=i+1
 #
