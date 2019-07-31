@@ -1,0 +1,547 @@
+[ Stack Overflow  ](https://stackoverflow.com)
+
+  1. Products 
+  2. [ Customers ](/teams/customers)
+  3. [ Use cases ](/teams/use-cases)
+
+  1. [ Stack Overflow  Public questions and answers  ](/questions)
+  2. [ Teams  Private questions and answers for your team  ](/teams)
+  3. [ Enterprise  Private self-hosted questions and answers for your enterprise  ](/enterprise)
+  4. [ Talent  Hire technical talent  ](https://www.stackoverflowbusiness.com/talent)
+  5. [ Advertising  Reach developers worldwide  ](https://www.stackoverflowbusiness.com/advertising)
+
+  1.   2. [ Log in ](https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f22150299%2furlopen-error-errno-11001-getaddrinfo-failed) [ Sign up ](https://stackoverflow.com/users/signup?ssrc=head&returnurl=%2fusers%2fstory%2fcurrent)
+  3. ###  [ current community ](https://stackoverflow.com)
+
+    * [ Stack Overflow  ](https://stackoverflow.com)
+
+[ help ](https://stackoverflow.com/help) [ chat
+](https://chat.stackoverflow.com)
+
+    * [ Meta Stack Overflow  ](https://meta.stackoverflow.com)
+
+###  your communities
+
+[ Sign up
+](https://stackoverflow.com/users/signup?ssrc=site_switcher&returnurl=%2fusers%2fstory%2fcurrent)
+or [ log in
+](https://stackoverflow.com/users/login?ssrc=site_switcher&returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f22150299%2furlopen-
+error-errno-11001-getaddrinfo-failed) to customize your list.
+
+###  [ more stack exchange communities ](https://stackexchange.com/sites)
+
+[ company blog ](https://stackoverflow.blog)
+
+By using our site, you acknowledge that you have read and understand our [
+Cookie Policy ](https://stackoverflow.com/legal/cookie-policy) , [ Privacy
+Policy ](https://stackoverflow.com/legal/privacy-policy) , and our [ Terms of
+Service ](https://stackoverflow.com/legal/terms-of-service/public) .
+
+  1.   2. [ Home ](/)
+  3.     1. Public 
+    2. [ Stack Overflow  ](/questions)
+    3. [ Tags ](/tags)
+    4. [ Users ](/users)
+    5. [ Jobs ](/jobs?med=site-ui&ref=jobs-tab)
+  4.     1. Teams 
+
+[ What’s this? ](javascript:void\(0\))
+
+**Teams**
+
+Join Private Q &A
+
+Setup a private space for you and your coworkers to ask questions and share
+information.
+
+[ Learn more about Teams ](https://stackoverflow.com/teams)
+
+    2. [ Join Private Q&A  ](https://stackoverflow.com/teams "A private, secure home for your team's questions and answers. Starts at $10/month")
+
+#  [ urlopen error [Errno 11001] getaddrinfo failed
+](/questions/22150299/urlopen-error-errno-11001-getaddrinfo-failed)
+
+[ Ask Question ](/questions/ask)
+
+Asked  5 years, 5 months ago
+
+Active  [ 1 year, 4 months ago ](?lastactivity "2018-03-22 15:36:41Z")
+
+Viewed  30k times
+
+4
+
+I'm new to python and I'm following a video tutorial.
+
+So here's the code snippet
+
+    
+    
+    from urllib.request import urlopen
+    with urlopen('http://sixty-north/c/t.txt') as story:
+        story_words = []
+        for line in story:
+            line_words = line.decode('utf-8').split()
+            for word in line_words:
+                story_words.append(word)
+    
+
+I'm able to access ` http://sixty-north.com/c/t.txt ` in my browser.
+
+However when I type this into command prompt: ` python words.py ` I get this
+error:
+
+    
+    
+    C:\New folder>python words.py
+    Traceback (most recent call last):
+      File "C:\Python33\lib\urllib\request.py", line 1248, in do_open
+        h.request(req.get_method(), req.selector, req.data, headers)
+      File "C:\Python33\lib\http\client.py", line 1065, in request
+        self._send_request(method, url, body, headers)
+      File "C:\Python33\lib\http\client.py", line 1103, in _send_request
+        self.endheaders(body)
+      File "C:\Python33\lib\http\client.py", line 1061, in endheaders
+        self._send_output(message_body)
+      File "C:\Python33\lib\http\client.py", line 906, in _send_output
+        self.send(msg)
+      File "C:\Python33\lib\http\client.py", line 844, in send
+        self.connect()
+      File "C:\Python33\lib\http\client.py", line 822, in connect
+        self.timeout, self.source_address)
+      File "C:\Python33\lib\socket.py", line 417, in create_connection
+        for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+    socket.gaierror: [Errno 11001] getaddrinfo failed
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "words.py", line 2, in <module>
+        with urlopen('http://sixty-north/c/t.txt') as story:
+      File "C:\Python33\lib\urllib\request.py", line 156, in urlopen
+        return opener.open(url, data, timeout)
+      File "C:\Python33\lib\urllib\request.py", line 469, in open
+        response = self._open(req, data)
+      File "C:\Python33\lib\urllib\request.py", line 487, in _open
+        '_open', req)
+      File "C:\Python33\lib\urllib\request.py", line 447, in _call_chain
+        result = func(*args)
+      File "C:\Python33\lib\urllib\request.py", line 1274, in http_open
+        return self.do_open(http.client.HTTPConnection, req)
+      File "C:\Python33\lib\urllib\request.py", line 1251, in do_open
+        raise URLError(err)
+    urllib.error.URLError: <urlopen error [Errno 11001] getaddrinfo failed>
+    
+
+[ python ](/questions/tagged/python "show questions tagged 'python'") [
+python-3.x ](/questions/tagged/python-3.x "show questions tagged
+'python-3.x'")
+
+[ share ](/q/22150299 "short permalink to this question") |  [ improve this
+question ](/posts/22150299/edit)
+
+asked  Mar 3 '14 at 15:11
+
+[
+![](https://www.gravatar.com/avatar/3683b53d4d8ce1fc0a7c8a494208c62a?s=32&d=identicon&r=PG&f=1)
+](/users/1177278/null-reference)
+
+[ Null Reference ](/users/1177278/null-reference) Null Reference
+
+5,168  33  33 gold badges  91  91 silver badges  157  157 bronze badges
+
+  * If you try to ping the host-name ` sixty-north ` do you expect to get a reply?  – [ Some programmer dude ](/users/440558/some-programmer-dude "311,341 reputation") Mar 3 '14 at 15:17 
+
+  * you can refer this link also [ stackoverflow.com/questions/4847649/… ](http://stackoverflow.com/questions/4847649/opening-websites-using-urllib2-from-behind-corporate-firewall-11004-getaddrinf "opening websites using urllib2 from behind corporate firewall 11004 getaddrinf") – [ RejeeshChandran ](/users/4093585/rejeeshchandran "1,059 reputation") Jan 19 '15 at 4:24 
+
+add a comment  |
+
+##  2 Answers  2
+
+[ active ](/questions/22150299/urlopen-error-errno-11001-getaddrinfo-
+failed?answertab=active#tab-top "Answers with the latest activity first") [
+oldest ](/questions/22150299/urlopen-error-errno-11001-getaddrinfo-
+failed?answertab=oldest#tab-top "Answers in the order they were provided") [
+votes ](/questions/22150299/urlopen-error-errno-11001-getaddrinfo-
+failed?answertab=votes#tab-top "Answers with the highest score first")
+
+4
+
+There is no such host: ` sixty-north ` . Replace ` sixty-north ` with ` sixty-
+north.com ` (notice: ` .com ` at the end)
+
+[ share ](/a/22150462 "short permalink to this answer") |  [ improve this
+answer ](/posts/22150462/edit)
+
+answered  Mar 3 '14 at 15:18
+
+[
+![](https://www.gravatar.com/avatar/d92ce60d3a4cbe03598e27c2e8dee69d?s=32&d=identicon&r=PG)
+](/users/4279/jfs)
+
+[ jfs ](/users/4279/jfs) jfs
+
+283k  84  84 gold badges  615  615 silver badges  1177  1177 bronze badges
+
+  * 1 
+
+Ah, rookie mistake. Thanks  – [ Null Reference ](/users/1177278/null-reference
+"5,168 reputation") Mar 4 '14 at 0:51
+
+add a comment  |
+
+0
+
+Change host: ` sixty-north ` with ` sixty-north.com ` And also, Restart your
+Internet Connection. Your Internet is not working properly.
+
+[ share ](/a/49432736 "short permalink to this answer") |  [ improve this
+answer ](/posts/49432736/edit)
+
+answered  Mar 22 '18 at 15:36
+
+[ ![](https://graph.facebook.com/1699119440136466/picture?type=large)
+](/users/9421162/ishaan-sharma)
+
+[ Ishaan Sharma ](/users/9421162/ishaan-sharma) Ishaan Sharma
+
+1
+
+add a comment  |
+
+##  Your Answer
+
+Thanks for contributing an answer to Stack Overflow!
+
+  * Please be sure to _answer the question_ . Provide details and share your research! 
+
+But _avoid_ …
+
+  * Asking for help, clarification, or responding to other answers. 
+  * Making statements based on opinion; back them up with references or personal experience. 
+
+To learn more, see our [ tips on writing great answers ](/help/how-to-answer)
+.
+
+draft saved
+
+draft discarded
+
+###  Sign up or [ log in
+](/users/login?ssrc=question_page&returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f22150299%2furlopen-
+error-errno-11001-getaddrinfo-failed%23new-answer)
+
+Sign up using Google
+
+Sign up using Facebook
+
+Sign up using Email and Password
+
+###  Post as a guest
+
+Name
+
+Email
+
+Required, but never shown
+
+###  Post as a guest
+
+Name
+
+Email
+
+Required, but never shown
+
+Post Your Answer  Discard
+
+By clicking “Post Your Answer”, you agree to our [ terms of service
+](https://stackoverflow.com/legal/terms-of-service/public) , [ privacy policy
+](https://stackoverflow.com/legal/privacy-policy) and [ cookie policy
+](https://stackoverflow.com/legal/cookie-policy)
+
+##  Not the answer you're looking for? Browse other questions tagged [ python
+](/questions/tagged/python "show questions tagged 'python'") [ python-3.x
+](/questions/tagged/python-3.x "show questions tagged 'python-3.x'") or [ ask
+your own question ](/questions/ask) .
+
+Blog
+
+  * [ ](https://stackoverflow.blog/2019/07/30/find-help-online-mindfully-and-effectively/)
+
+[ Find Help Online Mindfully — and Effectively!
+](https://stackoverflow.blog/2019/07/30/find-help-online-mindfully-and-
+effectively/)
+
+Featured on Meta
+
+  * [ ](https://meta.stackexchange.com/questions/330326/custom-filters-release-announcement)
+
+[ Custom Filters release announcement
+](https://meta.stackexchange.com/questions/330326/custom-filters-release-
+announcement)
+
+  * [ ](https://meta.stackexchange.com/questions/331248/unicorn-meta-zoo-6-interview-with-catija)
+
+[ Unicorn Meta Zoo #6: Interview with Catija
+](https://meta.stackexchange.com/questions/331248/unicorn-meta-
+zoo-6-interview-with-catija)
+
+  * [ ](https://meta.stackoverflow.com/questions/387651/the-world-is-big-and-i-am-so-small-what-are-the-implications-for-our-meta-commu)
+
+[ The world is big and I am SO small. What are the implications for our meta…
+](https://meta.stackoverflow.com/questions/387651/the-world-is-big-and-i-am-
+so-small-what-are-the-implications-for-our-meta-commu "The world is big and I
+am SO small. What are the implications for our meta community with the changes
+in Stack Overflow?")
+
+  * [ ](https://meta.stackoverflow.com/questions/387602/creating-a-system-for-featuring-posts-tell-the-mods-what-you-want)
+
+[ Creating a system for featuring posts. Tell the mods what you want
+](https://meta.stackoverflow.com/questions/387602/creating-a-system-for-
+featuring-posts-tell-the-mods-what-you-want)
+
+  * [ ](https://meta.stackoverflow.com/questions/387883/should-the-mod-team-tighten-up-moderation-on-meta-comments)
+
+[ Should the mod team tighten up moderation on Meta comments?
+](https://meta.stackoverflow.com/questions/387883/should-the-mod-team-tighten-
+up-moderation-on-meta-comments)
+
+####  Linked
+
+[ 5  ](/q/4847649 "Vote score \(upvotes - downvotes\)") [ opening websites
+using urllib2 from behind corporate firewall - 11004 getaddrinfo failed
+](/questions/4847649/opening-websites-using-urllib2-from-behind-corporate-
+firewall-11004-getaddrinf?noredirect=1)
+
+####  Related
+
+[ 20  ](/q/8763451 "Vote score \(upvotes - downvotes\)") [ How to handle
+urllib's timeout in Python 3? ](/questions/8763451/how-to-handle-urllibs-
+timeout-in-python-3)
+
+[ 3  ](/q/12379207 "Vote score \(upvotes - downvotes\)") [ urlopen error An
+error occured while connecting to the server: ApplicationError: 2 [Errno
+10104] getaddrinfo failed ](/questions/12379207/urlopen-error-an-error-
+occured-while-connecting-to-the-server-applicationerror)
+
+[ 1  ](/q/38508715 "Vote score \(upvotes - downvotes\)") [ Python download
+images with alernating variables ](/questions/38508715/python-download-images-
+with-alernating-variables)
+
+[ 1  ](/q/41514649 "Vote score \(upvotes - downvotes\)") [ urllib.request
+fails on urlopen of unicode string ](/questions/41514649/urllib-request-fails-
+on-urlopen-of-unicode-string)
+
+[ 0  ](/q/52403046 "Vote score \(upvotes - downvotes\)") [ URLError: <urlopen
+error [Errno 11001] getaddrinfo failed>,why? ](/questions/52403046/urlerror-
+urlopen-error-errno-11001-getaddrinfo-failed-why)
+
+[ 0  ](/q/52717319 "Vote score \(upvotes - downvotes\)") [ failing at
+downloading an image with “urllib.request.urlretrieve” in Python
+](/questions/52717319/failing-at-downloading-an-image-with-urllib-request-
+urlretrieve-in-python)
+
+[ 0  ](/q/53672079 "Vote score \(upvotes - downvotes\)") [
+nltk.data.load('/…/…', format = 'raw') error ](/questions/53672079/nltk-data-
+load-format-raw-error)
+
+[ 3  ](/q/54472026 "Vote score \(upvotes - downvotes\)") [ Python 3.7 -
+Download Image - Urllib.request.urlretrieve Error
+](/questions/54472026/python-3-7-download-image-urllib-request-urlretrieve-
+error)
+
+[ 0  ](/q/55088793 "Vote score \(upvotes - downvotes\)") [ Gaierror while
+importing pretrained vgg model on kaggle ](/questions/55088793/gaierror-while-
+importing-pretrained-vgg-model-on-kaggle)
+
+[ 0  ](/q/55339873 "Vote score \(upvotes - downvotes\)") [ Getting [SSL:
+CERTIFICATE_VERIFY_FAILED] error when trying to run geocoder in geopy how can
+I verify the certificate to get needed output? ](/questions/55339873/getting-
+ssl-certificate-verify-failed-error-when-trying-to-run-geocoder-in-ge)
+
+####  [ Hot Network Questions ](https://stackexchange.com/questions?tab=hot)
+
+  * [ Rampant sharing of authorship among colleagues in the name of "collaboration". Is not taking part in it a death knell for a future in academia? ](https://academia.stackexchange.com/questions/134006/rampant-sharing-of-authorship-among-colleagues-in-the-name-of-collaboration-i)
+  * [ Solving PDE with unreasonable results ](https://mathematica.stackexchange.com/questions/203024/solving-pde-with-unreasonable-results)
+  * [ Why did some Apollo missions carry a grenade launcher? ](https://space.stackexchange.com/questions/37775/why-did-some-apollo-missions-carry-a-grenade-launcher)
+  * [ Should students have access to past exams or an exam bank? ](https://academia.stackexchange.com/questions/134061/should-students-have-access-to-past-exams-or-an-exam-bank)
+  * [ What is the German equivalent of the proverb 水清ければ魚棲まず (if the water is clear, fish won't live there)? ](https://german.stackexchange.com/questions/53539/what-is-the-german-equivalent-of-the-proverb-%e6%b0%b4%e6%b8%85%e3%81%91%e3%82%8c%e3%81%b0%e9%ad%9a%e6%a3%b2%e3%81%be%e3%81%9a-if-the-water-is-clear-f)
+  * [ Why subdominants are unstable? ](https://music.stackexchange.com/questions/87293/why-subdominants-are-unstable)
+  * [ How do I say "this is why…"? ](https://latin.stackexchange.com/questions/11231/how-do-i-say-this-is-why)
+  * [ A variant of the Multiple Traveling Salesman Problem ](https://or.stackexchange.com/questions/1092/a-variant-of-the-multiple-traveling-salesman-problem)
+  * [ Just how much information should you share with a former client? ](https://graphicdesign.stackexchange.com/questions/127197/just-how-much-information-should-you-share-with-a-former-client)
+  * [ Do the books ever say oliphaunts aren’t elephants? ](https://scifi.stackexchange.com/questions/216689/do-the-books-ever-say-oliphaunts-aren-t-elephants)
+  * [ How to stack multiple matrices? ](https://mathematica.stackexchange.com/questions/203026/how-to-stack-multiple-matrices)
+  * [ How do I make my photos have more impact? ](https://photo.stackexchange.com/questions/109932/how-do-i-make-my-photos-have-more-impact)
+  * [ How do you deal with characters with multiple races? ](https://rpg.stackexchange.com/questions/152716/how-do-you-deal-with-characters-with-multiple-races)
+  * [ Was the Psych theme song written for the show? ](https://movies.stackexchange.com/questions/102379/was-the-psych-theme-song-written-for-the-show)
+  * [ Return list of all values that match Two criteria ](https://superuser.com/questions/1466001/return-list-of-all-values-that-match-two-criteria)
+  * [ Security measures that could plausibly last 150+ years? ](https://worldbuilding.stackexchange.com/questions/151967/security-measures-that-could-plausibly-last-150-years)
+  * [ Microgravity indicators ](https://space.stackexchange.com/questions/37815/microgravity-indicators)
+  * [ Is semen retention an important thing in martial arts? ](https://martialarts.stackexchange.com/questions/9314/is-semen-retention-an-important-thing-in-martial-arts)
+  * [ Multiple line chart ](https://bioinformatics.stackexchange.com/questions/9112/multiple-line-chart)
+  * [ Why are we moving in circles with a tandem kayak? ](https://outdoors.stackexchange.com/questions/22718/why-are-we-moving-in-circles-with-a-tandem-kayak)
+  * [ Antonym of "Megalomania" ](https://english.stackexchange.com/questions/506838/antonym-of-megalomania)
+  * [ Why did the natural major scale and the minor scales come to dominate common practice music? ](https://music.stackexchange.com/questions/87292/why-did-the-natural-major-scale-and-the-minor-scales-come-to-dominate-common-pra)
+  * [ Boots or trail runners with reference to blisters? ](https://outdoors.stackexchange.com/questions/22726/boots-or-trail-runners-with-reference-to-blisters)
+  * [ What do I lose by going Paladin 17 / Warlock 3, instead of taking 1 additional level or 1 fewer level in Warlock? ](https://rpg.stackexchange.com/questions/152698/what-do-i-lose-by-going-paladin-17-warlock-3-instead-of-taking-1-additional-l)
+
+more hot questions
+
+[ Question feed ](/feeds/question/22150299 "Feed of this question and its
+answers")
+
+#  Subscribe to RSS
+
+Question feed
+
+To subscribe to this RSS feed, copy and paste this URL into your RSS reader.
+
+![](/posts/22150299/ivc/6f00)
+
+lang-py
+
+[ ](https://stackoverflow.com)
+
+#####  [ Stack Overflow ](https://stackoverflow.com)
+
+  * [ Questions ](/questions)
+  * [ Jobs ](https://stackoverflow.com/jobs)
+  * [ Developer Jobs Directory ](https://stackoverflow.com/jobs/directory/developer-jobs)
+  * [ Salary Calculator ](https://stackoverflow.com/jobs/salary)
+  * [ Help ](/help)
+  * Mobile 
+
+#####  [ Products ](https://www.stackoverflowbusiness.com)
+
+  * [ Teams ](https://stackoverflow.com/teams)
+  * [ Talent ](https://www.stackoverflowbusiness.com/talent)
+  * [ Advertising ](https://www.stackoverflowbusiness.com/advertising)
+  * [ Enterprise ](https://stackoverflow.com/enterprise)
+
+#####  [ Company ](https://stackoverflow.com/company/about)
+
+  * [ About ](https://stackoverflow.com/company/about)
+  * [ Press ](https://stackoverflow.com/company/press)
+  * [ Work Here ](https://stackoverflow.com/company/work-here)
+  * [ Legal ](https://stackoverflow.com/legal)
+  * [ Privacy Policy ](https://stackoverflow.com/legal/privacy-policy)
+  * [ Contact Us ](https://stackoverflow.com/company/contact)
+
+#####  [ Stack Exchange  
+Network ](https://stackexchange.com)
+
+  * Technology 
+  * Life / Arts 
+  * Culture / Recreation 
+  * Science 
+  * Other 
+
+  * [ Stack Overflow ](https://stackoverflow.com "professional and enthusiast programmers")
+  * [ Server Fault ](https://serverfault.com "system and network administrators")
+  * [ Super User ](https://superuser.com "computer enthusiasts and power users")
+  * [ Web Applications ](https://webapps.stackexchange.com "power users of web applications")
+  * [ Ask Ubuntu ](https://askubuntu.com "Ubuntu users and developers")
+  * [ Webmasters ](https://webmasters.stackexchange.com "pro webmasters")
+  * [ Game Development ](https://gamedev.stackexchange.com "professional and independent game developers")
+
+  * [ TeX - LaTeX ](https://tex.stackexchange.com "users of TeX, LaTeX, ConTeXt, and related typesetting systems")
+  * [ Software Engineering ](https://softwareengineering.stackexchange.com "professionals, academics, and students working within the systems development life cycle")
+  * [ Unix & Linux ](https://unix.stackexchange.com "users of Linux, FreeBSD and other Un*x-like operating systems")
+  * [ Ask Different (Apple) ](https://apple.stackexchange.com "power users of Apple hardware and software")
+  * [ WordPress Development ](https://wordpress.stackexchange.com "WordPress developers and administrators")
+  * [ Geographic Information Systems ](https://gis.stackexchange.com "cartographers, geographers and GIS professionals")
+  * [ Electrical Engineering ](https://electronics.stackexchange.com "electronics and electrical engineering professionals, students, and enthusiasts")
+
+  * [ Android Enthusiasts ](https://android.stackexchange.com "enthusiasts and power users of the Android operating system")
+  * [ Information Security ](https://security.stackexchange.com "information security professionals")
+  * [ Database Administrators ](https://dba.stackexchange.com "database professionals who wish to improve their database skills and learn from others in the community")
+  * [ Drupal Answers ](https://drupal.stackexchange.com "Drupal developers and administrators")
+  * [ SharePoint ](https://sharepoint.stackexchange.com "SharePoint enthusiasts")
+  * [ User Experience ](https://ux.stackexchange.com "user experience researchers and experts")
+  * [ Mathematica ](https://mathematica.stackexchange.com "users of Wolfram Mathematica")
+
+  * [ Salesforce ](https://salesforce.stackexchange.com "Salesforce administrators, implementation experts, developers and anybody in-between")
+  * [ ExpressionEngine® Answers ](https://expressionengine.stackexchange.com "administrators, end users, developers and designers for ExpressionEngine® CMS")
+  * [ Stack Overflow em Português ](https://pt.stackoverflow.com "programadores profissionais e entusiastas")
+  * [ Blender ](https://blender.stackexchange.com "people who use Blender to create 3D graphics, animations, or games")
+  * [ Network Engineering ](https://networkengineering.stackexchange.com "network engineers")
+  * [ Cryptography ](https://crypto.stackexchange.com "software developers, mathematicians and others interested in cryptography")
+  * [ Code Review ](https://codereview.stackexchange.com "peer programmer code reviews")
+
+  * [ Magento ](https://magento.stackexchange.com "users of the Magento e-Commerce platform")
+  * [ Software Recommendations ](https://softwarerecs.stackexchange.com "people seeking specific software recommendations")
+  * [ Signal Processing ](https://dsp.stackexchange.com "practitioners of the art and science of signal, image and video processing")
+  * [ Emacs ](https://emacs.stackexchange.com "those using, extending or developing Emacs")
+  * [ Raspberry Pi ](https://raspberrypi.stackexchange.com "users and developers of hardware and software for Raspberry Pi")
+  * [ Stack Overflow на русском ](https://ru.stackoverflow.com "программистов")
+  * [ Code Golf ](https://codegolf.stackexchange.com "programming puzzle enthusiasts and code golfers")
+
+  * [ Stack Overflow en español ](https://es.stackoverflow.com "programadores y profesionales de la informática")
+  * [ Ethereum ](https://ethereum.stackexchange.com "users of Ethereum, the decentralized application platform and smart contract enabled blockchain")
+  * [ Data Science ](https://datascience.stackexchange.com "Data science professionals, Machine Learning specialists, and those interested in learning more about the field")
+  * [ Arduino ](https://arduino.stackexchange.com "developers of open-source hardware and software that is compatible with Arduino")
+  * [ Bitcoin ](https://bitcoin.stackexchange.com "Bitcoin crypto-currency enthusiasts")
+  * [ **more (30)** ](https://stackexchange.com/sites#technology)
+
+  * [ Photography ](https://photo.stackexchange.com "professional, enthusiast and amateur photographers")
+  * [ Science Fiction & Fantasy ](https://scifi.stackexchange.com "science fiction and fantasy enthusiasts")
+  * [ Graphic Design ](https://graphicdesign.stackexchange.com "Graphic Design professionals, students, and enthusiasts")
+  * [ Movies & TV ](https://movies.stackexchange.com "movie and tv enthusiasts")
+  * [ Music: Practice & Theory ](https://music.stackexchange.com "musicians, students, and enthusiasts")
+  * [ Worldbuilding ](https://worldbuilding.stackexchange.com "writers/artists using science, geography and culture to construct imaginary worlds and settings")
+  * [ Seasoned Advice (cooking) ](https://cooking.stackexchange.com "professional and amateur chefs")
+
+  * [ Home Improvement ](https://diy.stackexchange.com "contractors and serious DIYers")
+  * [ Personal Finance & Money ](https://money.stackexchange.com "people who want to be financially literate")
+  * [ Academia ](https://academia.stackexchange.com "academics and those enrolled in higher education")
+  * [ Law ](https://law.stackexchange.com "legal professionals, students, and others with experience or interest in law")
+  * [ **more (15)** ](https://stackexchange.com/sites#lifearts)
+
+  * [ English Language & Usage ](https://english.stackexchange.com "linguists, etymologists, and serious English language enthusiasts")
+  * [ Skeptics ](https://skeptics.stackexchange.com "scientific skepticism")
+  * [ Mi Yodeya (Judaism) ](https://judaism.stackexchange.com "those who base their lives on Jewish law and tradition and anyone interested in learning more")
+  * [ Travel ](https://travel.stackexchange.com "road warriors and seasoned travelers")
+  * [ Christianity ](https://christianity.stackexchange.com "committed Christians, experts in Christianity and those interested in learning more")
+  * [ English Language Learners ](https://ell.stackexchange.com "speakers of other languages learning English")
+  * [ Japanese Language ](https://japanese.stackexchange.com "students, teachers, and linguists wanting to discuss the finer points of the Japanese language")
+
+  * [ Arqade (gaming) ](https://gaming.stackexchange.com "passionate videogamers on all platforms")
+  * [ Bicycles ](https://bicycles.stackexchange.com "people who build and repair bicycles, people who train cycling, or commute on bicycles")
+  * [ Role-playing Games ](https://rpg.stackexchange.com "gamemasters and players of tabletop, paper-and-pencil role-playing games")
+  * [ Anime & Manga ](https://anime.stackexchange.com "anime and manga fans")
+  * [ Puzzling ](https://puzzling.stackexchange.com "those who create, solve, and study puzzles")
+  * [ Motor Vehicle Maintenance & Repair ](https://mechanics.stackexchange.com "mechanics and DIY enthusiast owners of cars, trucks, and motorcycles")
+  * [ **more (33)** ](https://stackexchange.com/sites#culturerecreation)
+
+  * [ MathOverflow ](https://mathoverflow.net "professional mathematicians")
+  * [ Mathematics ](https://math.stackexchange.com "people studying math at any level and professionals in related fields")
+  * [ Cross Validated (stats) ](https://stats.stackexchange.com "people interested in statistics, machine learning, data analysis, data mining, and data visualization")
+  * [ Theoretical Computer Science ](https://cstheory.stackexchange.com "theoretical computer scientists and researchers in related fields")
+  * [ Physics ](https://physics.stackexchange.com "active researchers, academics and students of physics")
+  * [ Chemistry ](https://chemistry.stackexchange.com "scientists, academics, teachers, and students in the field of chemistry")
+  * [ Biology ](https://biology.stackexchange.com "biology researchers, academics, and students")
+
+  * [ Computer Science ](https://cs.stackexchange.com "students, researchers and practitioners of computer science")
+  * [ Philosophy ](https://philosophy.stackexchange.com "those interested in the study of the fundamental nature of knowledge, reality, and existence")
+  * [ **more (11)** ](https://stackexchange.com/sites#science)
+
+  * [ Meta Stack Exchange ](https://meta.stackexchange.com "meta-discussion of the Stack Exchange family of Q&A websites")
+  * [ Stack Apps ](https://stackapps.com "apps, scripts, and development with the Stack Exchange API")
+  * [ API ](https://api.stackexchange.com "programmatic interaction with Stack Exchange sites")
+  * [ Data ](https://data.stackexchange.com "querying Stack Exchange data using SQL")
+
+  * [ Blog ](https://stackoverflow.blog?blb=1)
+  * [ Facebook ](https://www.facebook.com/officialstackoverflow/)
+  * [ Twitter ](https://twitter.com/stackoverflow)
+  * [ LinkedIn ](https://linkedin.com/company/stack-overflow)
+
+site design / logo © 2019 Stack Exchange Inc; user contributions licensed
+under [ cc by-sa 3.0 ](https://creativecommons.org/licenses/by-sa/3.0/) with [
+attribution required ](https://stackoverflow.blog/2009/06/25/attribution-
+required/) .  rev 2019.7.30.34490
+
+Stack Overflow works best with JavaScript enabled
+![](https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif)
+
