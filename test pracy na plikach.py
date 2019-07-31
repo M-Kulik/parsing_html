@@ -17,7 +17,6 @@ with open(file_dir) as fp:
     line = fp.readlines()
     line_count = len(line)
     c = 0
-    print(line_count)
     # count lines for loop
 
     while c < line_count:
@@ -40,22 +39,23 @@ with open(file_dir) as fp:
         # feeding soup with html code
 
         no_html = html2text.html2text(clean)
-        encoded_html = no_html.encode("utf-8")
-
         # getting plain text from soup
 
         domain = urllib.parse.urlparse(url)
         netloc = domain.netloc
         plain_url = netloc.strip()
         file_name = plain_url.replace(".", "_")
-        print(file_name)
+        print("url: " + netloc)
+        print("file name: " + file_name)
         # changing url network location to proper file name
 
         os.chdir("C:\\Users\\Mateusz\\Documents\\Python programy\\Upraszczanie stron\\Pliki zewnętrzne\\scrapped")
-        text_file = open(file_name+".txt", "w+")
-        text_file.write(encoded_html.__str__())
+        text_file = open(file_name + ".txt", "w+", encoding="utf-8")
+        text_file.write(no_html)
         text_file.close()
+        os.chdir("C:\\Users\\Mateusz\\Documents\\Python programy\\Upraszczanie stron\\Upraszczanie stron - program")
         # saving text file with cleared webpage
-        print("success!")
+
+        print("\nsaving successful!" + "\n_______________________________")
         c += 1
 
