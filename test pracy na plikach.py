@@ -20,6 +20,8 @@ with open(file_dir) as fp:
     # count lines for loop
 
     while c < line_count:
+        os.chdir("C:\\Users\\Mateusz\\Documents\\Python programy\\Upraszczanie stron\\Pliki zewnętrzne\\scrapped")
+
         url_line = line[c]
         if url_line.startswith("https://") or url_line.startswith("http://"):
             url = url_line
@@ -34,28 +36,36 @@ with open(file_dir) as fp:
             break
             # handle wrong url exception
 
-        soup = bs4.BeautifulSoup(r, 'html.parser')
-        clean = soup.prettify()
-        # feeding soup with html code
+        search_name = url.replace(".", "_").replace("/", "-").replace(":","^")
+        # replacing characters incompatible with windows file saving
 
-        no_html = html2text.html2text(clean)
-        # getting plain text from soup
+        if os.path.exists(search_name + ".txt") is True:
+            with open(search_name + ".txt", encoding="utf-8") as file:
+                file_is = file.read()
+                print(file_is)
+                c+=1
+        # printing content if present in storage folder
+        else:
+            soup = bs4.BeautifulSoup(r, 'html.parser')
+            clean = soup.prettify()
+            # feeding soup with html code
 
-        domain = urllib.parse.urlparse(url)
-        netloc = domain.netloc
-        plain_url = netloc.strip()
-        file_name = plain_url.replace(".", "_")
-        print("url: " + netloc)
-        print("file name: " + file_name)
-        # changing url network location to proper file name
+            no_html = html2text.html2text(clean)
+            # getting plain text from soup
 
-        os.chdir("C:\\Users\\Mateusz\\Documents\\Python programy\\Upraszczanie stron\\Pliki zewnętrzne\\scrapped")
-        text_file = open(file_name + ".txt", "w+", encoding="utf-8")
-        text_file.write(no_html)
-        text_file.close()
-        os.chdir("C:\\Users\\Mateusz\\Documents\\Python programy\\Upraszczanie stron\\Upraszczanie stron - program")
-        # saving text file with cleared webpage
+            domain = urllib.parse.urlparse(url)
+            netloc = domain.netloc
+            plain_url = netloc.strip()
+            file_name = plain_url.replace(".", "_")
+            print("url: " + url)
+            print("file name: " + search_name)
+            # changing url network location to proper file name
 
-        print("\nsaving successful!" + "\n_______________________________")
-        c += 1
+            with open(search_name + ".txt", "w+", encoding="utf-8") as f:
+                f.write(no_html)
+                print("Done boss!")
+            # saving text file with cleared webpage
+
+            print("\nsaving successful!" + "\n_______________________________")
+            c += 1
 
