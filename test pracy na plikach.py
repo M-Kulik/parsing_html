@@ -4,6 +4,8 @@ import os
 
 url_list_dir = "C:/Users/Mateusz/Documents/Python programy/Upraszczanie stron/Pliki zewnętrzne/"
 url_list_file = "url_list.txt"
+scrapped_dir = os.path.join("C:/Users/Mateusz/Documents/Python programy/Upraszczanie stron/Pliki zewnętrzne/scrapped/")
+
 file_dir = os.path.join(f"{url_list_dir}{url_list_file}")
 # directing to url_list
 
@@ -22,7 +24,6 @@ with open(file_dir) as fp:
     # counting lines for loop
 
     while c < line_count:
-        scrapped_dir = os.path.join("C:/Users/Mateusz/Documents/Python programy/Upraszczanie stron/Pliki zewnętrzne/scrapped/")
 # directing to scrapped websites folder
 
         url_line = line[c]
@@ -66,7 +67,7 @@ with open(file_dir) as fp:
                 d = f.readlines()
                 f.seek(0)
                 for i in d:
-                    if i.find("ookie") == -1:
+                    if i.find("ookie") or ("ciasteczka") or ("ciasteczek") == -1:
                         f.write(i)
                 f.truncate()
                 f.seek(0)
