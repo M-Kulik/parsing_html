@@ -21,7 +21,7 @@ with open(file_dir) as fp:
     line = fp.readlines()
     line_count = len(line)
     c = 0
-    # counting lines for loop
+# counting lines for loop
 
     while c < line_count:
 # directing to scrapped websites folder
@@ -73,7 +73,7 @@ with open(file_dir) as fp:
                 f.seek(0)
                 text_no_cookies = f.read()
                 f.truncate(0)
-# taking care of cookies popouts
+# taking care of cookies popups
 
                 lines = (line.strip() for line in text_no_cookies.splitlines())
                 chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
