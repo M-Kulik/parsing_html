@@ -1,10 +1,11 @@
-import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error
 import bs4
 import os
 
-url_list_dir = "C:/Users/Mateusz/Documents/Python programy/Upraszczanie stron/Pliki zewnętrzne/"
+
+url_list_dir = "C:/Users/Mateusz/PycharmProjects/parsing_html/Pliki zewnętrzne/"
 url_list_file = "url_list.txt"
-scrapped_dir = os.path.join("C:/Users/Mateusz/Documents/Python programy/Upraszczanie stron/Pliki zewnętrzne/scrapped/")
+scrapped_dir = os.path.join("C:/Users/Mateusz/PycharmProjects/parsing_html/Pliki zewnętrzne/scrapped/")
 
 file_dir = os.path.join(f"{url_list_dir}{url_list_file}")
 # directing to url_list
