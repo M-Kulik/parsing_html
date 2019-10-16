@@ -5,10 +5,17 @@ import urllib.parse, urllib.request
 # Init app
 app = Flask(__name__)
 
+# TESTING HOW TO USE GITHUB BRANCHES
+
 # TODO:
 # remove \"\\x00\\x00\\x00\\x00\\x00 from begeinig of file,
 # printing array in more readable form
 
+<<<<<<< tests
+=======
+# url of scrapped page
+url = r"https://forbot.pl/forum/topic/13278-elektryczny-longboard/"
+>>>>>>> local
 
 @app.route('/', methods=['GET'])
 def text():
