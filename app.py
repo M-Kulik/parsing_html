@@ -14,10 +14,11 @@ url = r"https://www.pipeburn.com/home/2019/09/09/titanium-tracker-ecosse-heretic
 scrapped_dir = os.path.join("C:/Users/Mateusz/PycharmProjects/parsing_html/Pliki zewnętrzne/scrapped/")
 search_name = urllib.parse.quote_plus(url)
 filename = os.path.join(scrapped_dir + search_name + ".txt")
+http_link = urllib.parse.quote_plus(url)
 
 
 # app route and access method
-@app.route('/getfile', methods=['GET'])
+@app.route(f'/getfile', methods=['GET'])
 def getfile():
 
     # handling http status codes
