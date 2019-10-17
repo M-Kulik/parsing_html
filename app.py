@@ -1,89 +1,76 @@
-from flask import Flask, request, jsonify
-import os,bs4
-import urllib.parse, urllib.request
+from flask import Flask
+import os
+import bs4
+import urllib.parse, urllib.error, urllib.request
 
 # Init app
 app = Flask(__name__)
 
-# TESTING HOW TO USE GITHUB BRANCHES
 
-# TODO:
-# remove \"\\x00\\x00\\x00\\x00\\x00 from begeinig of file,
-# printing array in more readable form
-
-<<<<<<< tests
-=======
 # url of scrapped page
-url = r"https://forbot.pl/forum/topic/13278-elektryczny-longboard/"
->>>>>>> local
+# url = r"https://www.pipeburn.com/home/2019/09/09/titanium-tracker-ecosse-heretic-by-roland-sands-designs.html"
 
-@app.route('/', methods=['GET'])
-def text():
-    return "hello dumbass"
+# file related variables
 
+# app route and access method
+@app.route('/<path:url>', methods=['GET'])
+def getfile(url):
 
-url = r"https://docs.python.org/3/library/urllib.parse.html"
-scrapped_dir = os.path.join("C:/Users/Mateusz/PycharmProjects/parsing_html/Pliki zewnętrzne/scrapped/")
-search_name = urllib.parse.quote_plus(url)
-filename = os.path.join(scrapped_dir + search_name + ".txt")
-r = urllib.request.urlopen(url)
-array = {}
-# deciding if file in folder
+    scrapped_dir = os.path.join("C:/Users/Mateusz/PycharmProjects/parsing_html/Pliki zewnętrzne/scrapped/")
+    search_name = urllib.parse.quote_plus(url)
+    filename = os.path.join(scrapped_dir + search_name + ".txt")
+    url_path = urllib.parse.quote(url, safe='')
 
+    # handling http status codes
+    try:
+        urllib.request.urlopen(url)
+    except urllib.error.URLError as e:
+        return str(e)
 
-@app.route('/getfile', methods=['GET'])
-def getfile():
+    # checking if file in folder
     if os.path.exists(filename):
-        with open(filename, encoding="utf-8") as f:
-            text = f.read()
-            print(url + "Webpage opened from file")
-            array[url] = text
-
+        with open(filename, 'r', encoding='utf-8') as f:
+            file_open = f.read()
+            # stripping null bytes from top of txt file
+            return file_open.strip('\x00')
     else:
+        r = urllib.request.urlopen(url)
         soup = bs4.BeautifulSoup(r, 'html.parser')
+
+        # extracting all script tags
         for script in soup(["script", "style"]):
             script.extract()
 
-        # saving raw soup in temp file
-        with open(filename, "w+", encoding="utf-8") as f:
+        # saving file
+        with open(filename, "w+", encoding='utf-8') as f:
             raw_text = soup.get_text()
             f.write(raw_text)
-            # saving soup in raw text form
-
             f.seek(0)
             d = f.readlines()
-            f.seek(0)
+            f.truncate(0)
+
+            # removing cookie policy popup text
             for i in d:
-                if i.find("ookie") or ("ciasteczka") or ("ciasteczek") == -1:
+                if i.find("ookie" or "ciasteczka" or "ciasteczek") == -1:
                     f.write(i)
-            f.truncate()
+
             f.seek(0)
             text_no_cookies = f.read()
             f.truncate(0)
-            # taking care of cookies popups
 
+            # striping file into lines
             lines = (line.strip() for line in text_no_cookies.splitlines())
-            chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
-            text = '\n'.join(chunk for chunk in chunks if chunk)
-            array[url] = text
-            f.write(text)
 
-    return jsonify(array)
+            # removing white spaces and null characters from lines
+            chunks = (phrase.strip().strip('\x00') for line in lines for phrase in line.split("  "))
 
-# >>>>IF YES:
-
-# file = request.files['file']
-# # appending to array
-# file_content = file.read()
-
-# >>>>IF NOT USE BS4 METHOD FROM BS_TEST:
-#     file_content = file.read()
+            # removing empty lines and saving as string to file
+            file_new = '\n'.join(chunk for chunk in chunks if chunk)
+            f.write(file_new)
+            return file_new
 
 
-# @app.route('/getfile', methods=['GET'])
-# def getfile():
-#     return jsonify({url: file_content})
 
-
+# running flask server from this script
 if __name__ == '__main__':
     app.run(debug='True')
