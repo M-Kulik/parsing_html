@@ -8,18 +8,18 @@ app = Flask(__name__)
 
 
 # url of scrapped page
-url = r"https://www.pipeburn.com/home/2019/09/09/titanium-tracker-ecosse-heretic-by-roland-sands-designs.html"
+# url = r"https://www.pipeburn.com/home/2019/09/09/titanium-tracker-ecosse-heretic-by-roland-sands-designs.html"
 
 # file related variables
-scrapped_dir = os.path.join("C:/Users/Mateusz/PycharmProjects/parsing_html/Pliki zewnętrzne/scrapped/")
-search_name = urllib.parse.quote_plus(url)
-filename = os.path.join(scrapped_dir + search_name + ".txt")
-http_link = urllib.parse.quote_plus(url)
-
 
 # app route and access method
-@app.route(f'/getfile', methods=['GET'])
-def getfile():
+@app.route('/<path:url>', methods=['GET'])
+def getfile(url):
+
+    scrapped_dir = os.path.join("C:/Users/Mateusz/PycharmProjects/parsing_html/Pliki zewnętrzne/scrapped/")
+    search_name = urllib.parse.quote_plus(url)
+    filename = os.path.join(scrapped_dir + search_name + ".txt")
+    url_path = urllib.parse.quote(url, safe='')
 
     # handling http status codes
     try:
