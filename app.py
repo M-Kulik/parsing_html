@@ -70,6 +70,7 @@ def getfile(url):
             return file_new
 
 
+getfile()
 
 # running flask server from this script
 if __name__ == '__main__':
