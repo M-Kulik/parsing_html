@@ -37,40 +37,29 @@ def getfile(url):
         r = urllib.request.urlopen(url)
         soup = bs4.BeautifulSoup(r, 'html.parser')
 
-        # extracting all script tags
+        # removing scripts
         for script in soup(["script", "style"]):
             script.extract()
 
-        # saving file
+        # creating file to store text
         with open(filename, "w+", encoding='utf-8') as f:
             raw_text = soup.get_text()
-            f.write(raw_text)
-            f.seek(0)
-            d = f.readlines()
-            f.truncate(0)
+            linelist = []
 
-            # removing cookie policy popup text
-            for i in d:
+            # removing cookie popups
+            for i in raw_text.splitlines():
                 if i.find("ookie" or "ciasteczka" or "ciasteczek") == -1:
-                    f.write(i)
-
-            f.seek(0)
-            text_no_cookies = f.read()
-            f.truncate(0)
-
-            # striping file into lines
-            lines = (line.strip() for line in text_no_cookies.splitlines())
+                    linelist.append(i)
 
             # removing white spaces and null characters from lines
-            chunks = (phrase.strip().strip('\x00') for line in lines for phrase in line.split("  "))
+            chunks = (phrase.strip().strip('\x00') for line in linelist for phrase in line.split("  "))
 
-            # removing empty lines and saving as string to file
+            # saving as string to file
             file_new = '\n'.join(chunk for chunk in chunks if chunk)
             f.write(file_new)
             return file_new
 
 
-getfile()
 
 # running flask server from this script
 if __name__ == '__main__':
