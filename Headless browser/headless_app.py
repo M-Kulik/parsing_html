@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
+<<<<<<< selenium
 import re
 
 # SELENIUM WEBDRIVER
@@ -39,22 +40,34 @@ for elem in element:
     if elem.text == maxlen:
         lentest.append(elem)
 
-t4 = time.perf_counter()
-print('finding size: ' + str(round(t4, 2)) + 's')
 
-# making list of all elements with max width
-domlist = []
-longest = lentest[0].size
-for dom in element:
-    doms = dom.size
-    if doms.get('width') == longest.get('width'):
-        if dom.text not in domlist:
-            domlist.append(dom)
+# SELENIUM WEBDRIVER
+url = 'https://www.crummy.com/software/BeautifulSoup/bs4/doc/#replace-with'
+>>>>>>> local
 
-print(len(domlist))
+async def main():
+    browser = await launch()
+    page = await browser.newPage()
+    await page.goto('https://miyakogi.github.io/pyppeteer/index.html')
+    await page.screenshot({'path': r'C:\Users\Mateusz\test.png'})
+    await browser.close()
 
-exit()
+asyncio.get_event_loop().run_until_complete(main())
 
+# # list of all elements
+# element = driver.find_elements_by_xpath('//*[@id]')
+#
+# # making list of all elements with max width
+# domlist = []
+# longest = lentest[0].size
+# for dom in element:
+#     doms = dom.size
+#     if doms.get('width') == longest.get('width'):
+#         if dom.text not in domlist:
+#             domlist.append(dom)
+
+
+<<<<<<< selenium
 # # # TODO: get width of element with most text, get all elements with same width
 #
 # # getting size width atribute of all dom elements
@@ -177,3 +190,5 @@ exit()
 # #
 # # for tagt in ptags:
 # #     print(tagt.text)
+=======
+>>>>>>> local
