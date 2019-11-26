@@ -8,7 +8,7 @@ import re
 # SELENIUM WEBDRIVER
 url = 'https://www.crummy.com/software/BeautifulSoup/bs4/doc/#replace-with'
 options = webdriver.ChromeOptions()
-options.add_argument('--headless')
+# options.add_argument('--headless')
 options.add_argument('disable-gpu')
 driver = webdriver.Chrome(options=options)
 driver.get(url)
@@ -24,14 +24,18 @@ print('collecting class tags: ' + str(round(t2, 2)) + 's')
 
 # getting element with most text in
 # lenght = [l.text for l in element if l.text not in lenght]
-lenght = []
+# lenght = []
+maxlen = 0
+
 for l in element:
-    if l.text not in lenght:
-        lenght.append(l.text)
-maxlen = max(lenght, key=len)
+    tlen = maxlen + 1
+    if tlen > maxlen:
+        maxlen = tlen
 
 t3 = time.perf_counter()
 print('getting longest text: ' + str(round(t3, 2)) + 's')
+
+exit()
 
 # getting the element back
 lentest = []
