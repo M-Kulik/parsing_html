@@ -10,45 +10,44 @@ url = 'https://www.crummy.com/software/BeautifulSoup/bs4/doc/#replace-with'
 options = webdriver.ChromeOptions()
 # options.add_argument('--headless')
 options.add_argument('disable-gpu')
-driver = webdriver.Chrome(options=options)
-driver.get(url)
-t1 = time.perf_counter()
-print('engaging browser: ' + str(round(t1, 2)) + 's')
+with webdriver.Chrome(options=options) as driver:
+    # driver = webdriver.Chrome(options=options)
+    driver.get(url)
+    t1 = time.perf_counter()
+    print('engaging browser: ' + str(round(t1, 2)) + 's')
 
-# list of all elements
-element = driver.find_elements_by_xpath('//*[@id]')
-content = driver.page_source
+    # list of all elements
+    time.sleep(2)
+    element = driver.find_elements_by_xpath('//*[not(child::*)]')
+    all_elements = driver.find_elements_by_xpath('//div')
 
-t2 = time.perf_counter()
-print('collecting class tags: ' + str(round(t2, 2)) + 's')
+    t2 = time.perf_counter()
+    print('collecting class tags: ' + str(round(t2, 2)) + 's')
 
-# getting element with most text in
-# lenght = [l.text for l in element if l.text not in lenght]
-# lenght = []
-maxlen = 0
+    # getting element with most text in
+    maxlen = element[0]
+    print(maxlen.text)
 
-for l in element:
-    tlen = maxlen + 1
-    if tlen > maxlen:
-        maxlen = tlen
+    # # getting text in list
+    # element_text = [a.text for a in element]
+    # max_element = max(element_text, key=len)
+    # print(max_element)
+    # exit()
 
-t3 = time.perf_counter()
-print('getting longest text: ' + str(round(t3, 2)) + 's')
+    for el in element:
+        print(el)
+        exit()
+        if el.text is not None:
+            if el.text > maxlen.text:
+                maxlen = el
 
-exit()
+    t3 = time.perf_counter()
+    print('getting longest text: ' + str(round(t3, 2)) + 's')
 
-# getting the element back
-lentest = []
-for elem in element:
-    if elem.text == maxlen:
-        lentest.append(elem)
-
-# making list of all elements with max width
-domlist = []
-longest = lentest[0].size
-for dom in element:
-    doms = dom.size
-    if doms.get('width') == longest.get('width'):
-        if dom.text not in domlist:
+    # making list of all elements at the same position
+    domlist = []
+    for dom in element:
+        doms = dom.location
+        if doms.get('x') == maxlen.get('x'):
             domlist.append(dom)
             print(dom.text)
