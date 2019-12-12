@@ -6,7 +6,7 @@ import time
 import re
 
 # SELENIUM WEBDRIVER
-url = 'https://www.crummy.com/software/BeautifulSoup/bs4/doc/#replace-with'
+url = 'https://www.w3schools.com/xml/xpath_syntax.asp'
 options = webdriver.ChromeOptions()
 # options.add_argument('--headless')
 options.add_argument('disable-gpu')
@@ -26,28 +26,23 @@ with webdriver.Chrome(options=options) as driver:
 
     # getting element with most text in
     maxlen = element[0]
-    print(maxlen.text)
-
-    # # getting text in list
-    # element_text = [a.text for a in element]
-    # max_element = max(element_text, key=len)
-    # print(max_element)
-    # exit()
 
     for el in element:
-        print(el)
-        exit()
-        if el.text is not None:
-            if el.text > maxlen.text:
-                maxlen = el
+        if len(el.text) > len(maxlen.text):
+            maxlen = el
 
     t3 = time.perf_counter()
     print('getting longest text: ' + str(round(t3, 2)) + 's')
 
+    maxlen_location = maxlen.location
+
     # making list of all elements at the same position
+    time.sleep(2)
     domlist = []
     for dom in element:
         doms = dom.location
-        if doms.get('x') == maxlen.get('x'):
+        if doms.get('x') == maxlen_location.get('x'):
             domlist.append(dom)
-            print(dom.text)
+
+    for dom in domlist:
+        print(dom.text)
